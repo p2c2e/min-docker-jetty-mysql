@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project name="java-mysql" default="war" basedir=".">
+
+  <target name="clean" description="Clean the output directory">
+    <delete dir="./webapps"/>
+  </target>
+
+  <target name="war">
+    <war destfile="./webapps/java-mysql-1.0.war" 
+         compress="true" 
+         webxml="./src/main/webapp/WEB-INF/web.xml">
+      <lib dir="./src/main/webapp/WEB-INF/lib"/>
+      <fileset dir="src/main/webapp" 
+               excludes="WEB-INF/web.xml"/>
+    </war>
+  </target>
+
+</project>

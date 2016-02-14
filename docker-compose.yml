@@ -1,0 +1,21 @@
+mysql-server:
+    container_name: mysql-server
+    image: mysql
+    volumes:
+    - ${PWD}/startup:/docker-entrypoint-initdb.d
+    - ${PWD}/data:/var/lib/mysql
+    ports:
+    - 3306:3306
+    environment:
+    - MYSQL_ROOT_PASSWORD=mysqlpass
+jetty-server:
+    container_name: jetty-server
+    image: jetty 
+    volumes:
+    - ${PWD}/webapps:/var/lib/jetty/webapps 
+    ports:
+    - 8080:8080
+    - 443:8443
+    links:
+    - mysql-server:mysql-server
+    
